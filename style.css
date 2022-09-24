@@ -1,13 +1,13 @@
 :root{
-    --Color-num-1: rgb(202, 209, 255);
+    --Color-num-1: rgba(202, 209, 255, 0.76);
     --Color-num-2: rgba(135, 115, 211, 0.63);
     --Color-num-3: rgb(53, 38, 126 , 0.63);
 }
 .main__container{
     background-color: var(--Color-num-1);
-    background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BmLXM5Ny1ibS0wMTguanBn.jpg);
+    background-image: url(./Picture/main__container__background.jpg);
     background-size: cover;
-    background-blend-mode:color-burn;
+    background-blend-mode: color-burn;
     height: 100vh;
 }
 .test__contianer , .result__container{
