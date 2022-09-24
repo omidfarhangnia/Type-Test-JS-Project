@@ -1,5 +1,22 @@
 :root{
-    --Color-num-1: rgb(157, 167, 236);
-    --Color-num-2: rgb(135, 115, 211);
-    --Color-num-3: rgb(53, 38, 126);
+    --Color-num-1: rgb(202, 209, 255);
+    --Color-num-2: rgba(135, 115, 211, 0.63);
+    --Color-num-3: rgb(53, 38, 126 , 0.63);
+}
+.main__container{
+    background-color: var(--Color-num-1);
+    background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BmLXM5Ny1ibS0wMTguanBn.jpg);
+    background-size: cover;
+    background-blend-mode:color-burn;
+    height: 100vh;
+}
+.test__contianer , .result__container{
+    height: 93vh;
+    border-radius: 30px;
+}
+.test__contianer{
+    background: var(--Color-num-2);
+}
+.result__container{
+    background: var(--Color-num-3);
 }
