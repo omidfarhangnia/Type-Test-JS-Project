@@ -2,6 +2,7 @@
     --Color-num-1: rgba(202, 209, 255, 0.76);
     --Color-num-2: rgba(135, 115, 211, 0.63);
     --Color-num-3: rgb(53, 38, 126 , 0.63);
+    --Font-num-1: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .main__container{
     background-color: var(--Color-num-1);
@@ -18,5 +19,25 @@
     background: var(--Color-num-2);
 }
 .result__container{
+    background: var(--Color-num-3);
+}
+.test__countainer--words{
+    min-height: 153px;
+    font-size: 34px;
+    padding: 10px 15px;
+    font-family: var(--Font-num-1);
+}
+.test__countainer--input{
+    border: none;
+    font-size: 30px;
+    font-family: var(--Font-num-1);
+    width: calc(100% - 227px);
+}
+.test__countainer--input:focus{
+    outline: none;
+}
+.test__countainer--timer ,
+.test__countainer--restart--btn{
+    font-size: 25px;
     background: var(--Color-num-3);
 }
