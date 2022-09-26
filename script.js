@@ -2,20 +2,41 @@ var TestWords = `brave trouble concern know cry property fist page mixture lover
 // استفاده میکنم RegEX من برای اینکه این کلامات را تک تک در یک آرایه قرار بدم اینجا از 
 TestWords = TestWords.match(/(\w+)/g);
 
+const MainContainer = document.getElementById("main__container")
+const StartBtn = document.getElementById("start__button")
 const TestCountainerWords = document.getElementById("test__countainer__words")
 const WordInput = document.getElementById("word__input");
-const RemainTimerCountainer = document.querySelector(".test__countainer--timer");
+const RemainTimerContainer = document.querySelector(".test__countainer--timer");
 const RemaindTimer = document.getElementById("show__remaind__time");
 const RestartBtn = document.getElementById("Restart__button");
+const CountDownContainer = document.getElementById("CountDown__container")
 
+// این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
+StartBtn.addEventListener("click" , StartTypeTest)
+function StartTypeTest(){
+    AddTheClass(MainContainer , "d-none");
+    RemoveTheClass(CountDownContainer , "d-none")
+    AddTheClass(StartBtn , "d-none");
+    RemoveTheClass(TestCountainerWords , "d-none");
+    RemoveTheClass(CountDownContainer , "d-none");
+}
 // این فانکشن برای این است که با یک کلیک تایمر قطع شود
-
-RemainTimerCountainer.addEventListener("click" , HideTimerText)
+RemainTimerContainer.addEventListener("click" , HideTimerText)
 function HideTimerText(){
     if(RemaindTimer.classList.contains("invisible")){
-        RemaindTimer.classList.remove("invisible");
+        RemoveTheClass(RemaindTimer , "invisible")
     }
     else{
-        RemaindTimer.classList.add("invisible");
+        AddTheClass(RemaindTimer , "invisible")
     }
+}
+function RemoveTheClass(element , className){
+    element.classList.remove(className);
+}
+function AddTheClass(element , className){
+    element.classList.add(className);
+}
+function ChangeTheClass(element , OldClass , NewClass){
+    RemoveTheClass(element , OldClass)
+    AddTheClass(element , NewClass)
 }
