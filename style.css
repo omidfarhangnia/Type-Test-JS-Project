@@ -78,3 +78,11 @@
     color: var(--Color-num-6);
     font-size: 250px;
 }
+@keyframes PulseAnimation {
+    0% , 100%{
+        text-shadow: 0 0 0 #fff;
+    }
+    50%{
+        text-shadow: 0 0 100px var(--Color-num-3);
+    }
+}
