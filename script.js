@@ -11,9 +11,10 @@ const RemaindTimer = document.getElementById("show__remaind__time");
 const RestartBtn = document.getElementById("Restart__button");
 const CountDownContainer = document.getElementById("CountDown__container")
 const CountDownContainerText = document.getElementById("CountDown__container--text");
-
+var TheTimeInTimer;
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
-StartBtn.addEventListener("click" , StartTypeTest)
+StartBtn.addEventListener("click" , StartTypeTest);
+RestartBtn.addEventListener("click" , RestartTypeTest);
 function StartTypeTest(){
     AddTheClass(MainContainer , "d-none");
     RemoveTheClass(CountDownContainer , "d-none");
@@ -46,9 +47,9 @@ function AddTheClass(element , className){
 }
 // این فانکشن شامل اتقاقاتی هست که قبل از شروع تست رخ میدهد مثل شروع شدن شمارش معکوس و آماده شدن تست هم جزیی از کار این فانکشن است
 function StartCountingDown(){
+    CountDownContainerText.style.animation = "PulseAnimation 1s ease-in infinite";
     setTimeout(() => {
         CountDownContainerText.innerHTML = 3;
-        CountDownContainerText.style.animation = "PulseAnimation 1s ease-in infinite";
     }, 1000);
     setTimeout(() => {
         CountDownContainerText.innerHTML = 2;
@@ -71,7 +72,7 @@ function PutWordsInContainer(WordArray){
 }
 function StartingTimer(){
     var SecondContainer = 59;
-    var TheTimeInTimer = setInterval(() => {
+    TheTimeInTimer = setInterval(() => {
         // برای تبدیل اعداد زیر ده ثانیه به 09 یا 08 یا 07
         if(SecondContainer < 10){
             RemaindTimer.innerHTML = `00:0${SecondContainer}`;  
@@ -84,4 +85,11 @@ function StartingTimer(){
             clearTimeout(TheTimeInTimer);
         }
     }, 1000);
+}
+function RestartTypeTest(){
+    CountDownContainerText.innerHTML = "Ready!"; 
+    RemaindTimer.innerHTML = "01:00";
+    clearInterval(TheTimeInTimer);
+    StartTypeTest();
+    RemoveTheClass(RemaindTimer , "invisible");
 }
