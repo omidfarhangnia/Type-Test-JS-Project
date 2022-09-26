@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row main__container justify-content-around align-items-center">
+        <div class="row main__container justify-content-around align-items-center" id="main__container">
             <div class="col-8 test__contianer p-5">
                 <button class="user-select-none rounded-4 text-white border-0 start__button" id="start__button">START</button>
                 <div class="bg-white user-select-none rounded-4 test__countainer--words d-none" id="test__countainer__words">
@@ -28,8 +28,8 @@
 
             </div>
         </div>
-        <div class="CountDown__container d-flex justify-content-center align-items-center user-select-none d-none">
-            <h1 class="CountDown__container--text m-0 p-0">3</h1>
+        <div class="row CountDown__container align-items-center user-select-none d-none" id="CountDown__container">
+            <h1 class="CountDown__container--text text-center m-0 p-0" id="CountDown__container--text">Ready!</h1>
         </div>
     </div>
 </body>
