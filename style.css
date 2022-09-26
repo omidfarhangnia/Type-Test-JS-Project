@@ -32,10 +32,12 @@
     background: var(--Color-num-3);
 }
 .test__countainer--words{
-    min-height: 153px;
+    height: 170px;
     font-size: 34px;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    text-align: justify;
     font-family: var(--Font-num-1);
+    overflow: hidden;
 }
 .test__countainer--input{
     border: none;
