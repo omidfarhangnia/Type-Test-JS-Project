@@ -43,7 +43,7 @@
     border: none;
     font-size: 30px;
     font-family: var(--Font-num-1);
-    width: calc(100% - 227px);
+    width: calc(100% - 241px);
 }
 .test__countainer--input:focus{
     outline: none;
