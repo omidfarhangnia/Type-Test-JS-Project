@@ -22,6 +22,7 @@ function StartTypeTest(){
     RemoveTheClass(CountDownContainer , "d-none");
     RestartBtn.disabled = false;
     StartCountingDown()
+    PutWordsInContainer(TestWords);
 }
 // این فانکشن برای این است که با یک کلیک تایمر دیده نمیشود اما همچنان تایمر به کارش ادامه میدهد
 RemainTimerContainer.addEventListener("click" , HideTimerText)
@@ -41,7 +42,7 @@ function RemoveTheClass(element , className){
 function AddTheClass(element , className){
     element.classList.add(className);
 }
-// این فانکشن شامل اتقاقاتی هست که قبل از شروع تست رخ میدهد مثل شروع شدن شمارش معکوس
+// این فانکشن شامل اتقاقاتی هست که قبل از شروع تست رخ میدهد مثل شروع شدن شمارش معکوس و آماده شدن تست هم جزیی از کار این فانکشن است
 function StartCountingDown(){
     setTimeout(() => {
         CountDownContainerText.innerHTML = 3;
@@ -57,4 +58,12 @@ function StartCountingDown(){
         AddTheClass(CountDownContainer , "d-none");
         RemoveTheClass(MainContainer , "d-none");
     }, 4000);
+}
+// این فانکشن برای گذاشتن کلامت در کانتینر آن ها است
+function PutWordsInContainer(WordArray){
+    var RandomWords = "";
+    for(var i = 0; i < WordArray.length; i++){
+        RandomWords += `<span>${WordArray[i]} </span>` ;
+    }
+    TestCountainerWords.innerHTML = RandomWords;
 }
