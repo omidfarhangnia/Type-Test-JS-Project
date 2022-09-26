@@ -32,10 +32,9 @@
     background: var(--Color-num-3);
 }
 .test__countainer--words{
-    height: 170px;
+    height: 201px;
     font-size: 34px;
     padding: 10px 20px;
-    text-align: justify;
     font-family: var(--Font-num-1);
     overflow: hidden;
 }
@@ -79,6 +78,20 @@
 .CountDown__container--text{
     color: var(--Color-num-6);
     font-size: 250px;
+}
+.Test__words{
+    margin: 5px;
+    padding: 1px 10px 0px;
+    border-radius: 12px;
+}
+.current__word{
+    background: #dddddd;
+}
+.Its__True{
+    background: rgb(45, 160, 45);
+}
+.Its__False{
+    background: rgb(224, 38, 38);
 }
 @keyframes PulseAnimation {
     0% , 100%{
