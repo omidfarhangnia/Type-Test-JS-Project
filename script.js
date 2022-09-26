@@ -23,6 +23,8 @@ function StartTypeTest(){
     RestartBtn.disabled = false;
     StartCountingDown()
     PutWordsInContainer(TestWords);
+    HideTimerText();
+    setTimeout(StartingTimer, 4000);
 }
 // این فانکشن برای این است که با یک کلیک تایمر دیده نمیشود اما همچنان تایمر به کارش ادامه میدهد
 RemainTimerContainer.addEventListener("click" , HideTimerText)
@@ -66,4 +68,20 @@ function PutWordsInContainer(WordArray){
         RandomWords += `<span>${WordArray[i]} </span>` ;
     }
     TestCountainerWords.innerHTML = RandomWords;
+}
+function StartingTimer(){
+    var SecondContainer = 59;
+    var TheTimeInTimer = setInterval(() => {
+        // برای تبدیل اعداد زیر ده ثانیه به 09 یا 08 یا 07
+        if(SecondContainer < 10){
+            RemaindTimer.innerHTML = `00:0${SecondContainer}`;  
+        }else{
+            RemaindTimer.innerHTML = `00:${SecondContainer}`;
+        }
+        SecondContainer--
+        if(SecondContainer == -1){
+            // در اینجا برای اینکه 00 در تایمر من نمایش داده شود من باید از عدد منفی یک استفاده میکردم
+            clearTimeout(TheTimeInTimer);
+        }
+    }, 1000);
 }
