@@ -3,17 +3,26 @@
     --Color-num-2: rgba(135, 115, 211, 0.63);
     --Color-num-3: rgb(53, 38, 126 , 0.63);
     --Color-num-4: rgb(53, 38, 126);
+    --Color-num-5: rgb(30, 13, 50);
+    --Color-num-6: rgb(226, 210, 244);
     --Font-num-1: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.container-fluid,
+.row{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .main__container{
     background-color: var(--Color-num-1);
     background-image: url(./Picture/main__container__background.jpg);
     background-size: cover;
     background-blend-mode: color-burn;
     height: 100vh;
+    z-index: 0;
 }
 .test__contianer , .result__container{
-    height: 93vh;
+    height: 90vh;
     border-radius: 30px;
 }
 .test__contianer{
@@ -42,18 +51,30 @@
     font-size: 25px;
     background: var(--Color-num-3);
 }
+.test__countainer--timer:hover{
+    cursor: pointer;
+}
+.test__countainer--restart--btn:disabled{
+    opacity: .6;
+}
 .start__button{
     width: 100%;
-    height: 153px;
-    padding: 10px 15px;
     font-size: 60px;
     letter-spacing: 10px;
+    padding: 30px;
     background: var(--Color-num-1);
     box-shadow: 10px 10px 0 var(--Color-num-4) , 5px 5px 0 var(--Color-num-4);
-    margin-bottom: 20px;
 }
 .start__button:active{
     transform: translate(10px , 10px);
     box-shadow: none;
     transition: .1s ease-in-out;
+}
+.CountDown__container{
+    height: 100vh;
+    background: var(--Color-num-5);
+}
+.CountDown__container--text{
+    color: var(--Color-num-6);
+    font-size: 250px;
 }
