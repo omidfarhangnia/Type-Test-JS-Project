@@ -10,17 +10,20 @@ const RemainTimerContainer = document.querySelector(".test__countainer--timer");
 const RemaindTimer = document.getElementById("show__remaind__time");
 const RestartBtn = document.getElementById("Restart__button");
 const CountDownContainer = document.getElementById("CountDown__container")
+const CountDownContainerText = document.getElementById("CountDown__container--text");
 
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest)
 function StartTypeTest(){
     AddTheClass(MainContainer , "d-none");
-    RemoveTheClass(CountDownContainer , "d-none")
+    RemoveTheClass(CountDownContainer , "d-none");
     AddTheClass(StartBtn , "d-none");
     RemoveTheClass(TestCountainerWords , "d-none");
     RemoveTheClass(CountDownContainer , "d-none");
+    RestartBtn.disabled = false;
+    StartCountingDown()
 }
-// این فانکشن برای این است که با یک کلیک تایمر قطع شود
+// این فانکشن برای این است که با یک کلیک تایمر دیده نمیشود اما همچنان تایمر به کارش ادامه میدهد
 RemainTimerContainer.addEventListener("click" , HideTimerText)
 function HideTimerText(){
     if(RemaindTimer.classList.contains("invisible")){
@@ -30,13 +33,28 @@ function HideTimerText(){
         AddTheClass(RemaindTimer , "invisible")
     }
 }
+// چون در جاهای زیادی نیاز بود که کلاسی را حذف کنم بخاطر همین این فانکشن را برای جلوگیری از تکرار کد ساختم
 function RemoveTheClass(element , className){
     element.classList.remove(className);
 }
+// چون در جاهای زیادی نیاز بود که کلاسی را اضافه کنم بخاطر همین این فانکشن را برای جلوگیری از تکرار کد ساختم
 function AddTheClass(element , className){
     element.classList.add(className);
 }
-function ChangeTheClass(element , OldClass , NewClass){
-    RemoveTheClass(element , OldClass)
-    AddTheClass(element , NewClass)
+// این فانکشن شامل اتقاقاتی هست که قبل از شروع تست رخ میدهد مثل شروع شدن شمارش معکوس
+function StartCountingDown(){
+    setTimeout(() => {
+        CountDownContainerText.innerHTML = 3;
+        CountDownContainerText.style.animation = "PulseAnimation 1s ease-in infinite";
+    }, 1000);
+    setTimeout(() => {
+        CountDownContainerText.innerHTML = 2;
+    }, 2000);
+    setTimeout(() => {
+        CountDownContainerText.innerHTML = 1;
+    }, 3000);
+    setTimeout(() => {
+        AddTheClass(CountDownContainer , "d-none");
+        RemoveTheClass(MainContainer , "d-none");
+    }, 4000);
 }
