@@ -11,6 +11,15 @@ const RestartBtn = document.getElementById("Restart__button");
 const CountDownContainer = document.getElementById("CountDown__container")
 const CountDownContainerText = document.getElementById("CountDown__container--text");
 const TimesUpMessage = document.getElementById("Times__Up__message");
+const LastUserResult = document.querySelector(".Last__user__result");
+const LastUserResultAnimation = document.querySelector(".Last__user__result--animation");
+const LastUserResultDatas = document.querySelector(".Last__user__result--datas");
+const UserTypeScore = document.getElementById("Last__user__result--usertypescore");
+const bubbleNum1 = document.querySelector(".bubble__num--1");
+const bubbleNum2 = document.querySelector(".bubble__num--2");
+const bubbleNum3 = document.querySelector(".bubble__num--3");
+const bubbleNum4 = document.querySelector(".bubble__num--4");
+const bubbleNum5 = document.querySelector(".bubble__num--5");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
@@ -96,15 +105,23 @@ function StartingTimer(){
         SecondContainer--
         if(SecondContainer == -1){
             // در اینجا برای اینکه 00 در تایمر من نمایش داده شود من باید از عدد منفی یک استفاده میکردم
+            var UserScoreWithWPM = UserScore / 1;
             clearTimeout(TheTimeInTimer);
             AddTheClass(TestCountainerWords , "d-none");
             RemoveTheClass(TimesUpMessage , "d-none");
+            RemoveTheClass(LastUserResult , "d-none");
+            UserTypeScore.innerHTML = UserScoreWithWPM;
+            TheProcessOfTypeTest(UserScoreWithWPM)
+            setTimeout(() => {
+                AddTheClass(LastUserResultAnimation , "d-none");
+                RemoveTheClass(LastUserResultDatas , "d-none");
+            }, 1300);
             /********************removing the word container******************/ 
             /*************** giving score function ******************/
             /********************* adding the score in top of the elements ************************/
             /******************************adding score to the score container****************************/
         }
-    }, 100);
+    }, 500);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
@@ -161,4 +178,17 @@ function CalcTheScore(CurrentWord){
     if(CurrentWord.length < 10) return;
     UserScore++;
     // این شرط به کلمات طولانی تر از ده یک امتیاز اضافه میدهد
+}
+// با این فانکشن روی چراغ های از حرفه ای تا ضعیف نسبت به سرعت تایپ کنترل داریم
+function TheProcessOfTypeTest(UserScoreWithWPM){
+    if(UserScoreWithWPM <= 10) return;
+    AddTheClass(bubbleNum1 , "On__bubble");
+    if(UserScoreWithWPM < 30) return;
+    AddTheClass(bubbleNum2 , "On__bubble");
+    if(UserScoreWithWPM < 50) return;
+    AddTheClass(bubbleNum3 , "On__bubble");
+    if(UserScoreWithWPM < 70) return;
+    AddTheClass(bubbleNum4 , "On__bubble");
+    if(UserScoreWithWPM < 90) return;
+    AddTheClass(bubbleNum5 , "On__bubble");
 }
