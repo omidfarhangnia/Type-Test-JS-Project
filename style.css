@@ -131,7 +131,6 @@
     height: 20px;
     outline: 3px solid var(--Color-num-2);
     outline-offset: 2px;
-    /* background: var(--Color-num-5); */
 }
 .Last__user__result--TextPart > h3{
     font-size: 40px;
@@ -139,6 +138,9 @@
 .Last__user__result--TextPart--number{
     font-size: 100px;
     margin-top: 30px;
+}
+.On__bubble{
+    background: var(--Color-num-5);
 }
 @keyframes LastResultAnimation {
     0% , 100%{
