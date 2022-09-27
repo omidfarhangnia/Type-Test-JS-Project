@@ -164,6 +164,12 @@ function CheckWords(TypeTestInput){
         // بعد از رد شدن کلمه ما نیاز داریم که اینپوت دوباره تیمز شود
         ClearInput(TypeTestInput);
     }
+    // این شرط برای زمانی است که کاربرد کلمه را اشتباه وارد کرده و یا کامل وارد نکرده
+    // اما دکمه اسپیس را میزند و به کلمه بعد میرود و نمره کلمه را نیز از دست میدهد
+    if(CurrentValue[CurrentValue.length - 1] == " "){
+        ClearInput(TypeTestInput);
+        SelectNewWord(CurrentWord);
+    }
 }
 // این فانکشن در صورت درست بودن کلمه را رد میکند
 function SelectNewWord(CurrentWord){
