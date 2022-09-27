@@ -12,7 +12,6 @@
     margin: 0 !important;
     padding: 0 !important;
 }
-
 .main__container{
     background-color: var(--Color-num-1);
     background-image: url(./Picture/main__container__background.jpg);
@@ -98,6 +97,56 @@
 }
 .Its__False{
     background: rgb(229, 20, 20);
+}
+.Last__user__result{
+    background: var(--Color-num-1);
+    height: 50%;
+}
+.Last__user__result--animation{
+    height: 130px;
+    width: 130px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: var(--Color-num-5) transparent;
+    animation: LastResultAnimation 2s infinite ease-in-out backwards;
+}
+.Last__user__result--animation::after{
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent var(--Color-num-5);
+    border-radius: 50%;
+    right: 15px;
+    top: 15px;
+    animation: LastResultAnimation 3s infinite ease-in-out backwards;
+}
+.Last__user__result--process > span{
+    font-size: 25px;
+}
+.Last__user__result--process > div{
+    width: 20px;
+    height: 20px;
+    outline: 3px solid var(--Color-num-2);
+    outline-offset: 2px;
+    /* background: var(--Color-num-5); */
+}
+.Last__user__result--TextPart > h3{
+    font-size: 40px;
+}
+.Last__user__result--TextPart--number{
+    font-size: 100px;
+    margin-top: 30px;
+}
+@keyframes LastResultAnimation {
+    0% , 100%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(360deg);
+    }
 }
 @keyframes PulseAnimation {
     0% , 100%{
