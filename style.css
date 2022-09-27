@@ -31,12 +31,18 @@
 .result__container{
     background: var(--Color-num-3);
 }
-.test__countainer--words{
+.test__countainer--words , .Times__Up__message{
     height: 201px;
     font-size: 34px;
     padding: 10px 20px;
     font-family: var(--Font-num-1);
     overflow: hidden;
+}
+.Times__Up__message{
+    background: var(--Color-num-3);
+}
+.Times__Up__message > h2{
+    font-size: 70px;
 }
 .test__countainer--input{
     border: none;
