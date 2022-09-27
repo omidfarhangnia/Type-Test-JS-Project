@@ -113,12 +113,12 @@ WordInput.addEventListener("input" , CheckTheSituation)
 // من با این فانکشن کاری کردم که تایپ کردن در اینپوت خارج از تست غیر ممکن شود
 function CheckTheSituation(TypeTestInput){
     if(TestCountainerWords.classList.contains("d-none")){
-        DisabledInput(TypeTestInput)
+        ClearInput(TypeTestInput)
     }else{
         CheckWords(TypeTestInput)
     }
 }
-function DisabledInput(TypeTestInput){
+function ClearInput(TypeTestInput){
     TypeTestInput.target.value = "";
 }
 function CheckWords(TypeTestInput){
@@ -132,4 +132,15 @@ function CheckWords(TypeTestInput){
     if(CurrentValue == ""){
         RemoveTheClass(CurrentWord , "Its__True")
     }
+    if(CurrentWord.innerHTML === CurrentValue){
+        SelectNewWord(CurrentWord);
+        ClearInput(TypeTestInput);
+    }
+}
+function SelectNewWord(CurrentWord){
+    AddTheClass(CurrentWord , "d-none");
+    RemoveTheClass(CurrentWord , "current__word");
+    var NextElement = CurrentWord.nextElementSibling;
+    AddTheClass(NextElement , "current__word");
+    CalcTheScore()
 }
