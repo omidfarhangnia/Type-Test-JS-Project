@@ -10,13 +10,16 @@ const RemaindTimer = document.getElementById("show__remaind__time");
 const RestartBtn = document.getElementById("Restart__button");
 const CountDownContainer = document.getElementById("CountDown__container")
 const CountDownContainerText = document.getElementById("CountDown__container--text");
+const TimesUpMessage = document.getElementById("Times__Up__message");
 let CurrentWord;
 var TheTimeInTimer;
+var UserScore = 0;
 
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
 function StartTypeTest(){
+    UserScore = 0;
     AddTheClass(MainContainer , "d-none");
     RemoveTheClass(CountDownContainer , "d-none");
     AddTheClass(StartBtn , "d-none");
@@ -94,17 +97,20 @@ function StartingTimer(){
         if(SecondContainer == -1){
             // در اینجا برای اینکه 00 در تایمر من نمایش داده شود من باید از عدد منفی یک استفاده میکردم
             clearTimeout(TheTimeInTimer);
+            AddTheClass(TestCountainerWords , "d-none");
+            RemoveTheClass(TimesUpMessage , "d-none");
             /********************removing the word container******************/ 
             /*************** giving score function ******************/
             /********************* adding the score in top of the elements ************************/
             /******************************adding score to the score container****************************/
         }
-    }, 1000);
+    }, 100);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
     CountDownContainerText.innerHTML = "Ready!"; 
     RemaindTimer.innerHTML = "01:00";
+    AddTheClass(TimesUpMessage , "d-none");
     clearInterval(TheTimeInTimer);
     StartTypeTest();
     RemoveTheClass(RemaindTimer , "invisible");
@@ -130,17 +136,29 @@ function CheckWords(TypeTestInput){
         ReplaceTheClass(CurrentWord , "Its__False" , "Its__True");
     }
     if(CurrentValue == ""){
+        // برای اینکه وقتی کاربرد اینپوت را خالی میکند کلاس درست بودن از آن حذف شود
         RemoveTheClass(CurrentWord , "Its__True")
     }
     if(CurrentWord.innerHTML === CurrentValue){
+        // این فانکشن در صورت درست بودن کلمه را رد میکند
         SelectNewWord(CurrentWord);
+        // حساب کننده نمره کاربر
+        CalcTheScore(CurrentWord.innerHTML);
+        // بعد از رد شدن کلمه ما نیاز داریم که اینپوت دوباره تیمز شود
         ClearInput(TypeTestInput);
     }
 }
+// این فانکشن در صورت درست بودن کلمه را رد میکند
 function SelectNewWord(CurrentWord){
     AddTheClass(CurrentWord , "d-none");
     RemoveTheClass(CurrentWord , "current__word");
-    var NextElement = CurrentWord.nextElementSibling;
-    AddTheClass(NextElement , "current__word");
-    CalcTheScore()
+    var NextWord = CurrentWord.nextElementSibling;
+    AddTheClass(NextWord , "current__word");
+}
+// 
+function CalcTheScore(CurrentWord){
+    UserScore++;
+    if(CurrentWord.length < 10) return;
+    UserScore++;
+    // این شرط به کلمات طولانی تر از ده یک امتیاز اضافه میدهد
 }
