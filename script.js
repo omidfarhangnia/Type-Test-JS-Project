@@ -23,8 +23,6 @@ const bubbleNum5 = document.querySelector(".bubble__num--5");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
-var LocalStorageData = "";
-
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
@@ -203,6 +201,7 @@ function TheProcessOfTypeTest(UserScoreWithWPM){
     if(UserScoreWithWPM < 90) return;
     AddTheClass(bubbleNum5 , "On__bubble");
 }
+// با این فانکشن مقادیر را در یوزر اسکور ذخیره میکنیم
 function SetDatasInStorage(UserScoreWithWPM){
     function CheckTheNum(Num){
         if(String(Num).length < 2){
@@ -212,7 +211,17 @@ function SetDatasInStorage(UserScoreWithWPM){
     }
     let Preset = new Date();
     let FullDate = `${CheckTheNum(Preset.getDate())}/${CheckTheNum(Preset.getMonth())}/${Preset.getFullYear()}`;
-    LocalStorageData += `[{"UserScore":"${UserScoreWithWPM}","Hour":"${Preset.getHours()}","FullDate":"${FullDate}"}],`;
-    localStorage.setItem("UserScore" , LocalStorageData);
+    var LocalStorageData = (localStorage.getItem("UserScoreHistory") == null) ? "" : localStorage.getItem("UserScoreHistory");
+    LocalStorageData = LocalStorageData + `{"UserScoreHistory":"${UserScoreWithWPM}","Hour":"${Preset.getHours()}","FullDate":"${FullDate}"},`;
+    localStorage.setItem("UserScoreHistory" , LocalStorageData);
     PutInResultPart();
+}
+function PutInResultPart(){
+    var UserScoreHistory = localStorage.getItem("UserScoreHistory");
+    // در اینجا من باید آخرین , را از آخر این استرینح حذف کنم که با جسون به مشکل نخورم
+    UserScoreHistory = `[${UserScoreHistory.slice(0 , UserScoreHistory.length - 1)}]`;
+    if(typeof(UserScoreHistory) == "string"){
+        UserScoreHistory = JSON.parse(UserScoreHistory);
+    }
+    FillResultPart(UserScoreHistory);
 }
