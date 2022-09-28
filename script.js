@@ -23,6 +23,7 @@ const bubbleNum5 = document.querySelector(".bubble__num--5");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
+var LocalStorageData = "";
 
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
@@ -116,12 +117,13 @@ function StartingTimer(){
                 AddTheClass(LastUserResultAnimation , "d-none");
                 RemoveTheClass(LastUserResultDatas , "d-none");
             }, 1300);
+            SetDatasInStorage(UserScoreWithWPM)
             /********************removing the word container******************/ 
             /*************** giving score function ******************/
             /********************* adding the score in top of the elements ************************/
             /******************************adding score to the score container****************************/
         }
-    }, 500);
+    }, 10);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
@@ -131,6 +133,9 @@ function RestartTypeTest(){
     clearInterval(TheTimeInTimer);
     StartTypeTest();
     RemoveTheClass(RemaindTimer , "invisible");
+    AddTheClass(LastUserResult , "d-none");
+    AddTheClass(LastUserResultDatas , "d-none");
+    RemoveTheClass(LastUserResultAnimation , "d-none");
 }
 WordInput.addEventListener("input" , CheckTheSituation)
 // من با این فانکشن کاری کردم که تایپ کردن در اینپوت خارج از تست غیر ممکن شود
@@ -197,4 +202,17 @@ function TheProcessOfTypeTest(UserScoreWithWPM){
     AddTheClass(bubbleNum4 , "On__bubble");
     if(UserScoreWithWPM < 90) return;
     AddTheClass(bubbleNum5 , "On__bubble");
+}
+function SetDatasInStorage(UserScoreWithWPM){
+    function CheckTheNum(Num){
+        if(String(Num).length < 2){
+            Num = "0" + Num;
+        }
+        return Num;
+    }
+    let Preset = new Date();
+    let FullDate = `${CheckTheNum(Preset.getDate())}/${CheckTheNum(Preset.getMonth())}/${Preset.getFullYear()}`;
+    LocalStorageData += `[{"UserScore":"${UserScoreWithWPM}","Hour":"${Preset.getHours()}","FullDate":"${FullDate}"}],`;
+    localStorage.setItem("UserScore" , LocalStorageData);
+    PutInResultPart();
 }
