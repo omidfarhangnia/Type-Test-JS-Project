@@ -178,6 +178,15 @@
     color: #fff;
     font-size: 25px;
 }
+.Clear__ResultContainer{
+    background-color: var(--Color-num-1);
+    padding: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.Clear__ResultContainer:focus{
+    box-shadow: none;
+}
 @keyframes LastResultAnimation {
     0% , 100%{
         transform: rotate(0deg);
