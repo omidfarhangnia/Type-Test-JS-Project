@@ -25,6 +25,12 @@ let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
 var UserScoreHistory;
+window.addEventListener("load" , () => {
+    UserScoreHistory = localStorage.getItem("UserScoreHistory");
+    if(UserScoreHistory == null) return;
+    PutInResultPart()
+
+})
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
@@ -217,8 +223,8 @@ function SetDatasInStorage(UserScoreWithWPM){
 function PutInResultPart(){
     UserScoreHistory = localStorage.getItem("UserScoreHistory");
     // در اینجا من باید آخرین , را از آخر این استرینح حذف کنم که با جسون به مشکل نخورم
-    UserScoreHistory = `[${UserScoreHistory.slice(0 , UserScoreHistory.length - 1)}]`;
     if(typeof(UserScoreHistory) == "string"){
+        UserScoreHistory = `[${UserScoreHistory.slice(0 , UserScoreHistory.length - 1)}]`;
         UserScoreHistory = JSON.parse(UserScoreHistory);
     }
     FillResultPart(UserScoreHistory);
