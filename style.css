@@ -29,6 +29,19 @@
 }
 .result__container{
     background: var(--Color-num-3);
+    overflow-y: scroll;
+}
+.result__container::-webkit-scrollbar{
+    width: 5px;
+}
+.result__container::-webkit-scrollbar-track{
+    margin: 30px 0;
+    background: var(--Color-num-6);
+    border-radius: 3px;
+}
+.result__container::-webkit-scrollbar-thumb{
+    border-radius: 3px;
+    background: var(--Color-num-5);
 }
 .test__countainer--words , .Times__Up__message{
     height: 201px;
@@ -141,6 +154,22 @@
 }
 .On__bubble{
     background: var(--Color-num-5);
+}
+.accordion-item{
+    background: transparent;
+    border: transparent;
+    padding: 8px 0;
+}
+.accordion-button , .accordion-button:not(.collapsed){
+    background: var(--Color-num-6);
+    border-radius: 10px;
+}
+.accordion-item:first-of-type{
+    border-radius: 10px;
+}
+.accordion-button:focus{
+    background: var(--Color-num-6);
+
 }
 @keyframes LastResultAnimation {
     0% , 100%{
