@@ -20,9 +20,11 @@ const bubbleNum2 = document.querySelector(".bubble__num--2");
 const bubbleNum3 = document.querySelector(".bubble__num--3");
 const bubbleNum4 = document.querySelector(".bubble__num--4");
 const bubbleNum5 = document.querySelector(".bubble__num--5");
+const ResultContainer = document.querySelector(".result__container");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
+var UserScoreHistory;
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
@@ -115,11 +117,8 @@ function StartingTimer(){
                 AddTheClass(LastUserResultAnimation , "d-none");
                 RemoveTheClass(LastUserResultDatas , "d-none");
             }, 1300);
-            SetDatasInStorage(UserScoreWithWPM)
-            /********************removing the word container******************/ 
-            /*************** giving score function ******************/
-            /********************* adding the score in top of the elements ************************/
-            /******************************adding score to the score container****************************/
+            SetDatasInStorage(UserScoreWithWPM);
+            PutInResultPart();
         }
     }, 10);
 }
@@ -212,16 +211,41 @@ function SetDatasInStorage(UserScoreWithWPM){
     let Preset = new Date();
     let FullDate = `${CheckTheNum(Preset.getDate())}/${CheckTheNum(Preset.getMonth())}/${Preset.getFullYear()}`;
     var LocalStorageData = (localStorage.getItem("UserScoreHistory") == null) ? "" : localStorage.getItem("UserScoreHistory");
-    LocalStorageData = LocalStorageData + `{"UserScoreHistory":"${UserScoreWithWPM}","Hour":"${Preset.getHours()}","FullDate":"${FullDate}"},`;
+    LocalStorageData = LocalStorageData + `{"UserScore":"${UserScoreWithWPM}","Hour":"${Preset.getHours()}","FullDate":"${FullDate}"},`;
     localStorage.setItem("UserScoreHistory" , LocalStorageData);
-    PutInResultPart();
 }
 function PutInResultPart(){
-    var UserScoreHistory = localStorage.getItem("UserScoreHistory");
+    UserScoreHistory = localStorage.getItem("UserScoreHistory");
     // در اینجا من باید آخرین , را از آخر این استرینح حذف کنم که با جسون به مشکل نخورم
     UserScoreHistory = `[${UserScoreHistory.slice(0 , UserScoreHistory.length - 1)}]`;
     if(typeof(UserScoreHistory) == "string"){
         UserScoreHistory = JSON.parse(UserScoreHistory);
     }
     FillResultPart(UserScoreHistory);
+}
+// با این فانکشن به تعداد تاریخچه ای که داریم برنامه برای ما آکاردیون ایجاد میکند
+function FillResultPart(UserScoreHistory){  
+    var ContainerAll = `<div class="accordion" id="Score__history__Result">`;
+    for(var i = 0; i < UserScoreHistory.length; i++){
+        ContainerAll += `
+        <div class="accordion-item" id="Header__num${i + 1}">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#btn__num__${i + 1}" aria-expanded="${(i == 0) ? true : false}" aria-controls="btn__num__${i + 1}">
+                ${UserScoreHistory[i].UserScore}
+            </button>
+        </div>
+        <div id="btn__num__${i + 1}" class="accordion-collapse collapse${(i == 0) ? " show" : ""} bg-warning" aria-labelledby="Header__num${i + 1}" data-bs-parent="#Score__history__Result">
+            <div class="accordion-body">
+                <span class="Hour__container">
+                    ${UserScoreHistory[i].Hour} O'clock
+                <span>
+                <hr>
+                <span class="FullDate__container">
+                    ${UserScoreHistory[i].FullDate}
+                </span>
+            </div>
+        </div>
+        `;
+    }
+    ContainerAll += `</div>`;
+    ResultContainer.innerHTML = ContainerAll;
 }
