@@ -217,7 +217,7 @@ function SetDatasInStorage(UserScoreWithWPM){
     let Preset = new Date();
     let FullDate = `${CheckTheNum(Preset.getDate())}/${CheckTheNum(Preset.getMonth())}/${Preset.getFullYear()}`;
     var LocalStorageData = (localStorage.getItem("UserScoreHistory") == null) ? "" : localStorage.getItem("UserScoreHistory");
-    LocalStorageData = LocalStorageData + `{"UserScore":"${UserScoreWithWPM}","Hour":"${Preset.getHours()}","FullDate":"${FullDate}"},`;
+    LocalStorageData = LocalStorageData + `{"UserScore":"${UserScoreWithWPM}","Time":"${CheckTheNum(Preset.getHours())}:${CheckTheNum(Preset.getMinutes())}","FullDate":"${FullDate}"},`;
     localStorage.setItem("UserScoreHistory" , LocalStorageData);
 }
 function PutInResultPart(){
@@ -236,17 +236,17 @@ function FillResultPart(UserScoreHistory){
         ContainerAll += `
         <div class="accordion-item" id="Header__num${i + 1}">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#btn__num__${i + 1}" aria-expanded="${(i == 0) ? true : false}" aria-controls="btn__num__${i + 1}">
-                ${UserScoreHistory[i].UserScore}
+                Score : ${UserScoreHistory[i].UserScore}
             </button>
         </div>
         <div id="btn__num__${i + 1}" class="accordion-collapse collapse" aria-labelledby="Header__num${i + 1}" data-bs-parent="#Score__history__Result">
             <div class="accordion-body">
-                <span class="Hour__container">
-                    ${UserScoreHistory[i].Hour} O'clock
+                <span class="Time__container">
+                    Time : ${UserScoreHistory[i].Time}
                 <span>
                 <hr>
                 <span class="FullDate__container">
-                    ${UserScoreHistory[i].FullDate}
+                    Date : ${UserScoreHistory[i].FullDate}
                 </span>
             </div>
         </div>
