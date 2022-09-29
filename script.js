@@ -239,7 +239,7 @@ function FillResultPart(UserScoreHistory){
                 ${UserScoreHistory[i].UserScore}
             </button>
         </div>
-        <div id="btn__num__${i + 1}" class="accordion-collapse collapse${(i == 0) ? " show" : ""} bg-warning" aria-labelledby="Header__num${i + 1}" data-bs-parent="#Score__history__Result">
+        <div id="btn__num__${i + 1}" class="accordion-collapse collapse" aria-labelledby="Header__num${i + 1}" data-bs-parent="#Score__history__Result">
             <div class="accordion-body">
                 <span class="Hour__container">
                     ${UserScoreHistory[i].Hour} O'clock
