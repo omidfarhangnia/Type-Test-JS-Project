@@ -28,9 +28,8 @@ var UserScoreHistory;
 window.addEventListener("load" , () => {
     UserScoreHistory = localStorage.getItem("UserScoreHistory");
     if(UserScoreHistory == null) return;
-    PutInResultPart()
-
-})
+    PutInResultPart();
+});
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
@@ -126,7 +125,7 @@ function StartingTimer(){
             SetDatasInStorage(UserScoreWithWPM);
             PutInResultPart();
         }
-    }, 10);
+    }, 1000);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
@@ -253,5 +252,5 @@ function FillResultPart(UserScoreHistory){
         `;
     }
     ContainerAll += `</div>`;
-    ResultContainer.innerHTML = ContainerAll;
+    ResultContainer.innerHTML += ContainerAll;
 }
