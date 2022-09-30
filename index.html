@@ -25,7 +25,7 @@
                 <button class="mt-4 text-white rounded-pill d-inline-block px-4 py-2 user-select-none border-0 test__countainer--restart--btn" id="Restart__button" disabled>Restart</button>
                 <div class="col-7 mt-4 rounded-4 Last__user__result d-flex flex-wrap justify-content-center align-items-center d-none">
                     <div class="Last__user__result--animation rounded-circle position-relative"></div>
-                    <div class="Last__user__result--datas w-100 h-100 d-flex flex-wrap justify-content-center align-items-center d-none">
+                    <div  class="Last__user__result--datas w-100 h-100 d-flex flex-wrap justify-content-center align-items-center d-none">
                         <div class="Last__user__result--process d-flex w-100 justify-content-around align-items-center">
                             <span class="text-white">Weak</span>
                             <div class="bubble__num--1 rounded-circle"></div>
@@ -41,8 +41,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 result__container text-end py-4">
-                <button type="button" class="btn-close Clear__ResultContainer"></button>
+            <div class="col-3">
+                <div class="row row-cols-1">
+                    <div class="result__container order-last text-end py-4">
+                    </div>
+                    <button type="button" class="ClearHistory__btn text-white text-center border-0 py-2" id="ClearHistory">
+                        Clear History
+                    </button>
+                </div>
             </div>
         </div>
         <div class="row CountDown__container align-items-center user-select-none d-none" id="CountDown__container">
