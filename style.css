@@ -92,6 +92,14 @@
     box-shadow: none;
     transition: .1s ease-in-out;
 }
+.start__button:disabled{
+    opacity: .6;
+}
+.start__button:disabled:active{
+    transform: translate(0 , 0);
+    box-shadow: 10px 10px 0 var(--Color-num-4) , 5px 5px 0 var(--Color-num-4);
+    transition: none;
+}
 .CountDown__container{
     height: 100vh;
     background: var(--Color-num-5);
