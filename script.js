@@ -21,6 +21,7 @@ const bubbleNum3 = document.querySelector(".bubble__num--3");
 const bubbleNum4 = document.querySelector(".bubble__num--4");
 const bubbleNum5 = document.querySelector(".bubble__num--5");
 const ResultContainer = document.querySelector(".result__container");
+const ClearHistoryBtn = document.getElementById("ClearHistory");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
@@ -30,6 +31,10 @@ window.addEventListener("load" , () => {
     if(UserScoreHistory == null) return;
     PutInResultPart();
 });
+ClearHistoryBtn.addEventListener("click" , () => {
+    localStorage.clear();
+    ResultContainer.innerHTML = "";
+})
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
