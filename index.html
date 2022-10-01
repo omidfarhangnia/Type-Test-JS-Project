@@ -14,9 +14,10 @@
     <div class="container-fluid">
         <div class="row main__container justify-content-around align-items-center" id="main__container">
             <div class="col-8 test__contianer p-5">
-                <button class="user-select-none rounded-4 text-white border-0 start__button" disabled id="start__button">START</button>
-                <div class="bg-white user-select-none rounded-4 d-flex flex-wrap justify-content-between test__countainer--words d-none" id="test__countainer__words">
-                </div>
+                <button class="user-select-none rounded-4 text-white border-0 start__button position-relative" disabled id="start__button">
+                    START
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" id="SelectedTimeBadge"></span>
+                </button>
                 <div class="user-select-none rounded-4 d-flex align-items-center justify-content-center Times__Up__message d-none" id="Times__Up__message">
                     <h2 class="text-white">Time Up!</h2>
                 </div>
@@ -44,11 +45,11 @@
                     <div class="row row-cols-1 row-cols-md-2 justify-content-around">
                         <h2 class="col-12 w-75 selecting__time__part--header text-white text-center rounded-pill">Please Choose The Time of Your Type Test.</h2>
                         <div class="w-100 mb-1"></div>
-                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0">1 Min</button>
-                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0">2 Min</button>
+                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0" onclick="SelectTimeForTest(this)">1 Min</button>
+                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0" onclick="SelectTimeForTest(this)">2 Min</button>
                         <div class="w-100 my-1"></div>
-                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0">3 Min</button>
-                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0">5 Min</button>
+                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0" onclick="SelectTimeForTest(this)">3 Min</button>
+                        <button class="col col-md-4 rounded-4 text-white times__for__select border-0" onclick="SelectTimeForTest(this)">5 Min</button>
                     </div>
                 </div>
             </div>
