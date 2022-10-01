@@ -218,6 +218,15 @@
     background-position-x: 99.8%;
     transition: .6s ease-out;
 }
+.start__button > .badge{
+    font-size: 20px;
+    letter-spacing: 0px;
+    padding-inline: 30px;
+    padding-block: 13px;
+    rotate: 29deg;
+    translate: -27px 29px;
+    background: var(--Color-num-5);
+}
 @keyframes LastResultAnimation {
     0% , 100%{
         transform: rotate(0deg);
