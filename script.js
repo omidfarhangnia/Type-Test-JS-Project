@@ -22,10 +22,12 @@ const bubbleNum4 = document.querySelector(".bubble__num--4");
 const bubbleNum5 = document.querySelector(".bubble__num--5");
 const ResultContainer = document.querySelector(".result__container");
 const ClearHistoryBtn = document.getElementById("ClearHistory");
+const SelectedTimeBadge = document.getElementById("SelectedTimeBadge");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
 var UserScoreHistory;
+var SelectedMinute;
 window.addEventListener("load" , () => {
     UserScoreHistory = localStorage.getItem("UserScoreHistory");
     if(UserScoreHistory == null) return;
@@ -39,6 +41,7 @@ ClearHistoryBtn.addEventListener("click" , () => {
 StartBtn.addEventListener("click" , StartTypeTest);
 RestartBtn.addEventListener("click" , RestartTypeTest);
 function StartTypeTest(){
+    RemaindTimer.innerHTML = `0${SelectedMinute}:00`;
     UserScore = 0;
     AddTheClass(MainContainer , "d-none");
     RemoveTheClass(CountDownContainer , "d-none");
@@ -190,7 +193,7 @@ function SelectNewWord(CurrentWord){
     var NextWord = CurrentWord.nextElementSibling;
     AddTheClass(NextWord , "current__word");
 }
-// 
+// این فانکشن هر بار که صدا زده میشود به نمره کاربرد یک عدد اضافه میکند
 function CalcTheScore(CurrentWord){
     UserScore++;
     if(CurrentWord.length < 10) return;
@@ -258,4 +261,10 @@ function FillResultPart(UserScoreHistory){
     }
     ContainerAll += `</div>`;
     ResultContainer.innerHTML += ContainerAll;
+}
+function SelectTimeForTest(element){
+    SelectedMinute = element.innerText.match(/^(\d+)/g)[0];
+    SelectedTimeBadge.innerHTML = `${SelectedMinute} Min`;
+    // با این کار من عددی را که هر المان رویش نوشته شده دریافت میکنم
+    StartBtn.disabled = false;
 }
