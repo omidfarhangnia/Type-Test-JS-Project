@@ -25,6 +25,7 @@ const bubbleNum5 = document.querySelector(".bubble__num--5");
 const ResultContainer = document.querySelector(".result__container");
 const ClearHistoryBtn = document.getElementById("ClearHistory");
 const SelectedTimeBadge = document.getElementById("SelectedTimeBadge");
+const SelectingTimePart = document.querySelector(".selecting__time__part")
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
@@ -33,7 +34,7 @@ var SelectedMinute;
 window.addEventListener("load" , () => {
     UserScoreHistory = localStorage.getItem("UserScoreHistory");
     if(UserScoreHistory == null) return;
-    PutInResultPart();
+    MakingDataReadyAndShowResult();
 });
 ClearHistoryBtn.addEventListener("click" , () => {
     localStorage.clear();
@@ -55,6 +56,7 @@ function StartTypeTest(){
     PutWordsInContainer(TestWords);
     RemoveTheClass(RemaindTimer , "invisible");
     setTimeout(StartingTimer, 4000);
+    AddTheClass(SelectingTimePart , "d-none");
 }
 // این فانکشن برای این است که با یک کلیک تایمر دیده نمیشود اما همچنان تایمر به کارش ادامه میدهد
 RemainTimerContainer.addEventListener("click" , HideTimerText)
@@ -110,7 +112,7 @@ function PutWordsInContainer(WordArray){
 }
 // فانکشنی برای شروع کار تایمر
 function StartingTimer(){
-    var SelectedMinute_Clone = --SelectedMinute;
+    var SelectedMinute_Clone = SelectedMinute - 1;
     var SecondContainer = 59;
     // 1 2 3 5
     TheTimeInTimer = setInterval(() => {
@@ -127,7 +129,7 @@ function StartingTimer(){
         }
         else if(SecondContainer == -1 && SelectedMinute_Clone == 0){
             // در اینجا برای اینکه 00 در تایمر من نمایش داده شود من باید از عدد منفی یک استفاده میکردم
-            var UserScoreWithWPM = UserScore / 1;
+            var UserScoreWithWPM = Math.ceil(UserScore / SelectedMinute);
             clearTimeout(TheTimeInTimer);
             AddTheClass(TestCountainerWords , "d-none");
             RemoveTheClass(TimesUpMessage , "d-none");
@@ -139,9 +141,9 @@ function StartingTimer(){
                 RemoveTheClass(LastUserResultDatas , "d-none");
             }, 1300);
             SetDatasInStorage(UserScoreWithWPM);
-            PutInResultPart();
+            MakingDataReadyAndShowResult();
         }
-    }, 1000);
+    }, 30);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
@@ -235,7 +237,7 @@ function SetDatasInStorage(UserScoreWithWPM){
     LocalStorageData = LocalStorageData + `{"UserScore":"${UserScoreWithWPM}","Time":"${CheckTheNum(Preset.getHours())}:${CheckTheNum(Preset.getMinutes())}","FullDate":"${FullDate}"},`;
     localStorage.setItem("UserScoreHistory" , LocalStorageData);
 }
-function PutInResultPart(){
+function MakingDataReadyAndShowResult(){
     UserScoreHistory = localStorage.getItem("UserScoreHistory");
     // در اینجا من باید آخرین , را از آخر این استرینح حذف کنم که با جسون به مشکل نخورم
     if(typeof(UserScoreHistory) == "string"){
