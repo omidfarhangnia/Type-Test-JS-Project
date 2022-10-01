@@ -7,6 +7,8 @@ const TestCountainerWords = document.getElementById("test__countainer__words")
 const WordInput = document.getElementById("word__input");
 const RemainTimerContainer = document.querySelector(".test__countainer--timer");
 const RemaindTimer = document.getElementById("show__remaind__time");
+const RemainTimerMin = document.getElementById("show__remaind__time--minute");
+const RemainTimerSec = document.getElementById("show__remaind__time--second");
 const RestartBtn = document.getElementById("Restart__button");
 const CountDownContainer = document.getElementById("CountDown__container")
 const CountDownContainerText = document.getElementById("CountDown__container--text");
@@ -108,16 +110,22 @@ function PutWordsInContainer(WordArray){
 }
 // فانکشنی برای شروع کار تایمر
 function StartingTimer(){
+    var SelectedMinute_Clone = --SelectedMinute;
     var SecondContainer = 59;
+    // 1 2 3 5
     TheTimeInTimer = setInterval(() => {
         // برای تبدیل اعداد زیر ده ثانیه به 09 یا 08 یا 07
         if(SecondContainer < 10){
-            RemaindTimer.innerHTML = `00:0${SecondContainer}`;  
+            RemaindTimer.innerHTML = `0${SelectedMinute_Clone}:0${SecondContainer}`;  
         }else{
-            RemaindTimer.innerHTML = `00:${SecondContainer}`;
+            RemaindTimer.innerHTML = `0${SelectedMinute_Clone}:${SecondContainer}`;
         }
         SecondContainer--
-        if(SecondContainer == -1){
+        if(SecondContainer == -1 && SelectedMinute_Clone != 0){
+            SelectedMinute_Clone--
+            SecondContainer = 59;
+        }
+        else if(SecondContainer == -1 && SelectedMinute_Clone == 0){
             // در اینجا برای اینکه 00 در تایمر من نمایش داده شود من باید از عدد منفی یک استفاده میکردم
             var UserScoreWithWPM = UserScore / 1;
             clearTimeout(TheTimeInTimer);
@@ -264,7 +272,8 @@ function FillResultPart(UserScoreHistory){
 }
 function SelectTimeForTest(element){
     SelectedMinute = element.innerText.match(/^(\d+)/g)[0];
-    SelectedTimeBadge.innerHTML = `${SelectedMinute} Min`;
     // با این کار من عددی را که هر المان رویش نوشته شده دریافت میکنم
+    SelectedTimeBadge.innerHTML = `${SelectedMinute} Min`;
+    RemaindTimer.innerHTML = `0${SelectedMinute}:00`
     StartBtn.disabled = false;
 }
