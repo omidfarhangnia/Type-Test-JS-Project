@@ -227,6 +227,17 @@
     translate: -27px 29px;
     background: var(--Color-num-5);
 }
+.modal-content{
+    background: var(--Color-num-4);
+}
+.modal-content h5{
+    font-size: 29px;
+    padding: 30px;
+}
+.show__current__time{
+    font-size: 19px;
+    padding: 15px 0;
+}
 @keyframes LastResultAnimation {
     0% , 100%{
         transform: rotate(0deg);
