@@ -25,7 +25,7 @@
                 </div>
                 <input type="text" class="mt-4 px-4 py-2 rounded-5 test__countainer--input" id="word__input" name="user--word" id="">
                 <div class="mt-4 text-white rounded-pill d-inline-block px-4 py-2 user-select-none test__countainer--timer"><span class="show__remaind__time invisible" id="show__remaind__time"><span id="show__remaind__time--minute">01</span>:<span id="show__remaind__time--second">00</span></div>
-                <button class="mt-4 text-white rounded-pill d-inline-block px-4 py-2 user-select-none border-0 test__countainer--restart--btn" id="Restart__button" disabled>Restart</button>
+                <button class="mt-4 text-white rounded-pill d-inline-block px-4 py-2 user-select-none border-0 test__countainer--restart--btn" role="button" data-bs-toggle="modal" href="#OfferChangingTime" id="Restart__button" disabled>Restart</button>
                 <div class="col-7 mt-4 rounded-4 Last__user__result d-flex flex-wrap justify-content-center align-items-center d-none">
                     <div class="Last__user__result--animation rounded-circle position-relative"></div>
                     <div  class="Last__user__result--datas w-100 h-100 d-flex flex-wrap justify-content-center align-items-center d-none">
@@ -69,5 +69,40 @@
             <h1 class="CountDown__container--text text-center m-0 p-0" id="CountDown__container--text">Ready!</h1>
         </div>
     </div>
+  
+      <div class="modal fade show d-block" aria-hidden="true" aria-labelledby="YouCanChangeTime" id="OfferChangingTime">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white" id="YouCanChangeTime">Do you want to change the time of your test?</h5>
+            </div>
+            <div class="modal-body">
+                <p class="show__current__time text-center text-white">Your Current Time : <span class="current__time"></span></p>
+                <div class="d-flex flex-row align-items-center justify-content-between">
+                    <div class="form-check p-0 m-0 d-flex align-items-center">
+                        <input class="me-1" type="checkbox" id="NeverOfferTimeChanging">
+                        <label class="text-white user-select-none" for="NeverOfferTimeChanging">Never ask it Again</label>
+                    </div>
+                    <button class="btn text-white px-3 py-2 border-white rounded-3" type="button" data-bs-dismiss="modal" aria-label="Close">Skip</button>
+                    <button class="btn text-white px-3 py-2 border-white rounded-3" role="button" data-bs-toggle="modal" href="#ChangeUserTime" data-bs-dismiss="modal" aria-label="Close">Change Time</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="modal fade" aria-hidden="true" aria-labelledby="Changing__userTime" id="ChangeUserTime">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Changing__userTime">What we Do?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               Hello
+            </div>
+          </div>
+        </div>
+      </div> -->
 </body>
 </html>
