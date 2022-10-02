@@ -270,7 +270,7 @@ function FillResultPart(UserScoreHistory){
         `;
     }
     ContainerAll += `</div>`;
-    ResultContainer.innerHTML += ContainerAll;
+    ResultContainer.innerHTML = ContainerAll;
 }
 function SelectTimeForTest(element){
     SelectedMinute = element.innerText.match(/^(\d+)/g)[0];
