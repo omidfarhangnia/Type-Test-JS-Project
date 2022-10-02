@@ -26,7 +26,8 @@ const ResultContainer = document.querySelector(".result__container");
 const ClearHistoryBtn = document.getElementById("ClearHistory");
 const SelectedTimeBadge = document.getElementById("SelectedTimeBadge");
 const SelectingTimePart = document.querySelector(".selecting__time__part");
-const ShowCurrentTime = document.querySelector(".show__current__time .current__time");
+const ShowCurrentTime = document.querySelectorAll(".show__current__time .current__time");
+const ModalSkipButton = document.getElementById('modal__skip__button')
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
@@ -43,7 +44,7 @@ ClearHistoryBtn.addEventListener("click" , () => {
 })
 // این فانکشن برای این است که تست تایپ بعد از استارت شروع شود
 StartBtn.addEventListener("click" , StartTypeTest);
-RestartBtn.addEventListener("click" , RestartTypeTest);
+ModalSkipButton.addEventListener("click" , RestartTypeTest);
 function StartTypeTest(){
     RemaindTimer.innerHTML = `0${SelectedMinute}:00`;
     UserScore = 0;
@@ -144,7 +145,7 @@ function StartingTimer(){
             SetDatasInStorage(UserScoreWithWPM);
             MakingDataReadyAndShowResult();
         }
-    }, 30);
+    }, 60);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
@@ -273,9 +274,11 @@ function FillResultPart(UserScoreHistory){
     ResultContainer.innerHTML = ContainerAll;
 }
 function SelectTimeForTest(element){
-    ShowCurrentTime.innerHTML = element.innerText;
     SelectedMinute = element.innerText.match(/^(\d+)/g)[0];
     // با این کار من عددی را که هر المان رویش نوشته شده دریافت میکنم
+    ShowCurrentTime.forEach((element) => {
+        element.innerHTML = `${SelectedMinute} Min`;
+    })
     SelectedTimeBadge.innerHTML = `${SelectedMinute} Min`;
     RemaindTimer.innerHTML = `0${SelectedMinute}:00`
     StartBtn.disabled = false;
