@@ -79,11 +79,7 @@
             <div class="modal-body">
                 <p class="show__current__time text-center text-white">Your Current Time : <span class="current__time"></span></p>
                 <div class="d-flex flex-row align-items-center justify-content-between">
-                    <div class="form-check p-0 m-0 d-flex align-items-center">
-                        <input class="me-1" type="checkbox" id="NeverOfferTimeChanging">
-                        <label class="text-white user-select-none" for="NeverOfferTimeChanging">Never ask it Again</label>
-                    </div>
-                    <button class="btn text-white px-3 py-2 border-white rounded-3" type="button" data-bs-dismiss="modal" aria-label="Close">Skip</button>
+                    <button class="btn text-white px-3 py-2 border-white rounded-3" type="button" data-bs-dismiss="modal" aria-label="Close" id="modal__skip__button">Skip</button>
                     <button class="btn text-white px-3 py-2 border-white rounded-3" role="button" data-bs-toggle="modal" href="#ChangeUserTime" data-bs-dismiss="modal" aria-label="Close">Change Time</button>
                 </div>
             </div>
@@ -91,18 +87,24 @@
         </div>
       </div>
 
-      <!-- <div class="modal fade" aria-hidden="true" aria-labelledby="Changing__userTime" id="ChangeUserTime">
+      <div class="modal fade" aria-hidden="true" aria-labelledby="Changing__userTime" id="ChangeUserTime">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="Changing__userTime">What we Do?</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title w-100 text-white text-center" id="Changing__userTime">Choose Time</h5>
             </div>
-            <div class="modal-body">
-               Hello
+            <div class="modal-body text-center">
+                <div class="Time__container d-flex justify-content-between">
+                    <div class="text-white user-select-none" onclick="SelectTimeForTest(this)"><span>1</span></div>
+                    <div class="text-white user-select-none" onclick="SelectTimeForTest(this)"><span>2</span></div>
+                    <div class="text-white user-select-none" onclick="SelectTimeForTest(this)"><span>3</span></div>
+                    <div class="text-white user-select-none" onclick="SelectTimeForTest(this)"><span>5</span></div>
+                </div>
+                <p class="show__current__time text-center text-white">Your Current Time : <span class="current__time"></span></p>
+                <button class="btn text-white px-3 py-2 mt-3  border-white rounded-3" type="button" data-bs-dismiss="modal" aria-label="Close" onclick="RestartTypeTest()">Start Test</button>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
 </body>
 </html>
