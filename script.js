@@ -25,7 +25,8 @@ const bubbleNum5 = document.querySelector(".bubble__num--5");
 const ResultContainer = document.querySelector(".result__container");
 const ClearHistoryBtn = document.getElementById("ClearHistory");
 const SelectedTimeBadge = document.getElementById("SelectedTimeBadge");
-const SelectingTimePart = document.querySelector(".selecting__time__part")
+const SelectingTimePart = document.querySelector(".selecting__time__part");
+const ShowCurrentTime = document.querySelector(".show__current__time .current__time");
 let CurrentWord;
 var TheTimeInTimer;
 var UserScore = 0;
@@ -148,7 +149,6 @@ function StartingTimer(){
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
     CountDownContainerText.innerHTML = "Ready!"; 
-    RemaindTimer.innerHTML = "01:00";
     AddTheClass(TimesUpMessage , "d-none");
     clearInterval(TheTimeInTimer);
     StartTypeTest();
@@ -273,6 +273,7 @@ function FillResultPart(UserScoreHistory){
     ResultContainer.innerHTML = ContainerAll;
 }
 function SelectTimeForTest(element){
+    ShowCurrentTime.innerHTML = element.innerText;
     SelectedMinute = element.innerText.match(/^(\d+)/g)[0];
     // با این کار من عددی را که هر المان رویش نوشته شده دریافت میکنم
     SelectedTimeBadge.innerHTML = `${SelectedMinute} Min`;
