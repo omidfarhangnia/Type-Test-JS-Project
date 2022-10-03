@@ -1,11 +1,12 @@
 ## Type Test Project
 ### Creator OMID FARHANGNIA ###
-- This is a project for using the javascript skills and working with Events , Timers , Functions and ...
+- This is a project for using the javascript skills and working with Events , Timers , local storage and ...
 - I Used Bootstrap for removing repeated css styles for my element.
 - This is not a responsive design
 ### discription ###
 - At the first you should choose the time of your test you have some choice(1 , 2 , 3 , 5) Min.
 - Then you can see an animation before starting test that this is a counting down element (you have 3 second for making yourself ready for starting the test).
+- You can see the your time that still remain if you dont want to see just click on the timer
 - Now you should do your best try to type so fast because you should increase your score.
 - Ok Times up wait for calculating the score.
 - Then you can see your score and your skill (weak to pro).
@@ -13,6 +14,8 @@
 - But before starting you should verify the time do you want to change your time?
 - If you dont need any change you can skip.
 - If you need to change the time you can change it so easy just click Change Time btn.
+- You can see your score and the time and the date that you take this test
+- Dont worry if you refresh the page your history is still there and you can clear history with the aid of clear history button
 - Ok change your time and start again dont forget that you always have a new chance for having better score.
 ### i Didnt work on the responsive shape of this project for some reasons : ###
 - First : more the users when they want to giving a test for their type speed they use laptops and PCs.
