@@ -1,4 +1,4 @@
-var TestWords = `brave trouble concern know cry property fist page mixture lover insist workshop close opinion recruit mix qualify head field possibility claim confine forecast wing liberal disagreement tumble handy lifestyle army bomber reproduction direction dine break exceed pony revolutionary fur rebel announcement prey fascinate debut enhance devote roll expect death similar snuggle edition divide need crime possible diet compartment researcher investment dimension thumb relate roof provincial auction bedroom achieve account disaster stop zone quarter banner bomber galaxy admiration rock slow philosophy constant night ideology differ glory responsible bench great drop initiative rocket community study hostility director compose screen grain evolution`;
+var TestWords = `brave trouble concern know cry property fist page mixture lover insist workshop close opinion recruit mix qualify head field possibility claim confine forecast wing liberal disagreement tumble handy lifestyle army bomber reproduction direction dine break exceed pony revolutionary fur rebel announcement prey fascinate debut enhance devote roll expect death similar snuggle edition divide need crime possible diet compartment researcher investment dimension thumb relate roof provincial auction bedroom achieve account disaster stop zone quarter banner bomber galaxy admiration rock slow philosophy constant night ideology differ glory responsible bench great drop initiative rocket community study hostility director compose screen grain evolution youth suite tiptoe reliable outlet necklace economic import history capture notice timber unique fault cheque adviser literature shift pyramid hard tie pavement regulation productive continuous root cable van resident contract makeup ground rear annual provincial shaft monopoly coast golf clay hospital technology tread pan willpower equal split diagram eject food figure opinion ghostwriter engine absorb pasture effort appreciate injection go ostracize perfume perforate huge unlike hour excavate empire location bacon sugar justice look harass pig nuance guerrilla preference jet tourist deprive temptation exemption fold lease battery friendly forest tread surprise chin particle disability host accurate joy pot unfortunate herb squash  figure opinion ghostwriter engine absorb pasture effort appreciate injection go ostracize perfume perforate huge unlike hour excavate empire location bacon sugar justice look harass pig nuance guerrilla preference jet tourist deprive temptation exemption fold lease battery friendly forest tread surprise chin particle disability host accurate joy pot unfortunate herb squash  image distort method salon coffee far composer assume gravity firefighter show storage calm pat formation pursuit head community accurate reproduction absolute bottle thinker compartment girlfriend hide plane galaxy family behead double beard mild comprehensive fixture guide dull reflect chimney net ask smooth pavement stem cherry healthy period waiter machinery primary pan message brink farewell social shoot commemorate outlook acquisition neck baby linger guitar flawed implication minimum association panic text upset animal smooth separate fish poem censorship unanimous monster rack situation elegant cancel fit commission us whip abortion sacrifice arrest team assembly exotic fur detective blank deep operational trivial invite jam equip waterfall sand blank east thank refrigerator past help window suitcase faith brick export quarrel material get as deliver facade autonomy experience bitter young oil distinct porter complex pig if football announcement essay cafe restrict assessment tight muggy social read dump national relevance category craft clash step feature unfair sister layout slip proclaim exposure afford arrest dash eavesdrop comedy ribbon hair wriggle explode start colleague deficit edge cheque freckle kitchen weapon low circulation disk knit chapter lean think trance real connection use pupil complete particular soak knee union economy table fault change gallon prevent banquet speculate rotten sea commitment trip adult ancestor chance excavation judge sacrifice experience gravity fee variety housing chapter weakness mastermind enhance reflect creation repetition witch champion bite merit deport cat fastidious register cell denial hostage winter verdict blame strike beginning feeling extension producer director soft stun seek berry afford perceive brown understand chauvinist casualty drown wardrobe sweep sow sensitive reign total intention fragment witch split effort no ring village user nonremittal charge hear catch disturbance pace president basket shrink elegant affinity widen move pocket replace magnetic dominate joint opinion nonsense gaffe value priority patent reason soprano lifestyle sustain plead pride banner prospect wonder animal death embarrassment boom lunch indirect nomination hair error manufacture miscarriage gain gravity conference fabricate particle paradox attack flavor tent drawer breeze culture convulsion get solo admire prison merchant quantity prevalence wealth miracle meal family beach weak loot banish demonstrator ball sense matrix cultivate child scrap bat faith pneumonia accessible legend liver analysis`;
 // استفاده میکنم RegEX من برای اینکه این کلامات را تک تک در یک آرایه قرار بدم اینجا از 
 TestWords = TestWords.match(/(\w+)/g);
 const MainContainer = document.getElementById("main__container")
@@ -28,11 +28,7 @@ const SelectedTimeBadge = document.getElementById("SelectedTimeBadge");
 const SelectingTimePart = document.querySelector(".selecting__time__part");
 const ShowCurrentTime = document.querySelectorAll(".show__current__time .current__time");
 const ModalSkipButton = document.getElementById('modal__skip__button')
-let CurrentWord;
-var TheTimeInTimer;
-var UserScore = 0;
-var UserScoreHistory;
-var SelectedMinute;
+let CurrentWord , TheTimeInTimer , UserScoreHistory , SelectedMinute , UserScore = 0;
 window.addEventListener("load" , () => {
     UserScoreHistory = localStorage.getItem("UserScoreHistory");
     if(UserScoreHistory == null) return;
@@ -46,6 +42,7 @@ ClearHistoryBtn.addEventListener("click" , () => {
 StartBtn.addEventListener("click" , StartTypeTest);
 ModalSkipButton.addEventListener("click" , RestartTypeTest);
 function StartTypeTest(){
+    TestWords = shuffle(TestWords);
     RemaindTimer.innerHTML = `0${SelectedMinute}:00`;
     UserScore = 0;
     AddTheClass(MainContainer , "d-none");
@@ -145,7 +142,7 @@ function StartingTimer(){
             SetDatasInStorage(UserScoreWithWPM);
             MakingDataReadyAndShowResult();
         }
-    }, 60);
+    }, 1000);
 }
 // این فانکشن برای ری استارت است اما قبل از اینکه دوباره از فانکشن استار تایپ تست استفاده کنم باید مقادیر اولیه هر المان را به آن برگردانم
 function RestartTypeTest(){
@@ -282,4 +279,17 @@ function SelectTimeForTest(element){
     SelectedTimeBadge.innerHTML = `${SelectedMinute} Min`;
     RemaindTimer.innerHTML = `0${SelectedMinute}:00`
     StartBtn.disabled = false;
+}
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+    return array;
 }
