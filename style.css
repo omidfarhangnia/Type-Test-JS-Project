@@ -238,6 +238,22 @@
     font-size: 19px;
     padding: 15px 0;
 }
+.Time__container > div{
+    line-height: 2;
+    font-size: 90px;
+    vertical-align: middle;
+    text-align: center;
+    width: 23%;
+    border: 3px solid #fff;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to bottom , var(--Color-num-3) 50%, var(--Color-num-5) 50%);
+    transition: background-position-y .6s;
+    background-position-y: 0%;
+}
+.Time__container > div:hover{
+    background-position-y: 99.8%;
+    transition: .6s ease-out;
+}
 @keyframes LastResultAnimation {
     0% , 100%{
         transform: rotate(0deg);
